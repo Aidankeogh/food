@@ -1,0 +1,75 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2638
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 HelveticaNeue-Bold;\f1\fnil\fcharset0 HelveticaNeue;\f2\fswiss\fcharset0 Helvetica;
+}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0\c87059;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b\fs24 \cf0 Thought for Food: Providing Quality Recipe Recommendations to the Bourgeoning Cook\
+
+\f1\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b \cf0 Abstract:
+\f1\b0  Recommender systems have gained traction in recommending movies, songs, and merchandise. Here, we look at a recommender system for food recipes using ratings and recipe datasets collected from Food.com over 18 years. We implement two separate approaches of collaborative filtering\'97 matrix factorization and user-user similarity to recommend users unseen recipes. We\'92ve incorporated x metrics. Future work will include ultilizing different datasets, looking at content-based regression approaches, other similarity metrics, and exploring different evaluation metrics.\
+\
+
+\f0\b Requirements:
+\f1\b0 \
+* dask\
+* pyspark\
+* RegressionEvaluator\
+* ALS\
+* pyspark.sql\
+* pandas\
+* numpy\
+* pickle\
+* matplotlib\
+* Ast\
+* functools\
+* scipy.states\
+* rbo\
+* sparse\
+* dask_ml\
+* time\
+\
+This notebook provides the EDA, data preparation, modeling, results, and evaluation for our recipe recommender system.\
+\
+
+\f0\b Part1: Data Loading and EDA
+\f1\b0 \
+Installing and Running the Project.\
+##[Dataset](https://www.kaggle.com/datasets/shuyangli94/food-com-recipes-and-user-interactions)\
+Download RAW_interactions and RAW_recipes datasets.\
+\pard\pardeftab720\sa140\partightenfactor0
+\cf2 \expnd0\expndtw0\kerning0
+1. Shunyang Li et al. provide mulitle datasets. The RAW_interactions data is the raw data for user-recipe ratings and the RAW_recipes data is the raw data for recipes with ingredients. We use the user-recipe rating data for building matrix factorization models as desribed. The othe data are processed versions of the rating and recipe data and the ingr_map provides a tokenized dataset for the recipes\cf0 \kerning1\expnd0\expndtw0 \
+2. EDA Includes distributions for number of ratings per user, number of ratings per recipe, mean ratings, \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+
+\f0\b Part 2: Data Preparation
+\f1\b0 \
+We remove \cf2 \expnd0\expndtw0\kerning0
+users who rated more than 100 recipes and fewer than 4; users who had an average rating of less than 2.5; recipes with fewer than 2 ratings; recipes with an average rating less than 2.5.\cf0 \kerning1\expnd0\expndtw0 \
+\
+
+\f0\b Part 3: Recipe Recommender Modeling
+\f1\b0 \
+
+\f0\b 3a:
+\f1\b0  ALS Collaborative Filtering, Pyspark.\
+\pard\pardeftab720\sa140\partightenfactor0
+\cf2 \expnd0\expndtw0\kerning0
+Our first model for building the recommender system. It takes the user-recipe rating data. We build an ALS collaborative filtering model to predict the rating a user will give a recipe. Evaluation: \cf0 \kerning1\expnd0\expndtw0 We look at Mean Squared Error (MSE), top-k-MSE, ranked biased overlap, Kendall\'92s Tau, normalized discounted cummulative gain, and Spearman Rank Correlation.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+
+\f0\b 3b:
+\f1\b0  User-user similarity, Dask.\
+\pard\pardeftab720\sa140\partightenfactor0
+\cf2 \expnd0\expndtw0\kerning0
+This uses an alternative approach to predicting user ratings through similarity scoring metrics and includes different types of rating averaging for baseline evaluation. \cf2 Evaluation: \cf0 \kerning1\expnd0\expndtw0 We look at Mean Squared Error (MSE), top-k-MSE, ranked biased overlap, Kendall\'92s Tau, normalized discounted cummulative gain, and Spearman Rank Correlation.
+\f2 \
+}
