@@ -2,7 +2,9 @@ Thought for Food: Providing Quality Recipe Recommendations to the Bourgeoning Co
 
 Abstract: Recommender systems have gained traction in recommending movies, songs, and merchandise. Here, we look at a recommender system for food recipes using ratings and recipe datasets collected from Food.com over 18 years. We implement two separate approaches of collaborative filtering— matrix factorization and user-user similarity to recommend users unseen recipes. We’ve incorporated metrics such as top k MSE, Ranked Biased Overlap, Normalized Discounted Cummulative Gain, and Spearman Rank Correlation. Future work will include ultilizing different datasets, looking at content-based regression approaches, other similarity metrics, and exploring different evaluation metrics.
 
-Quickstart: Run RecipeRecommender.ipynb which contains most of this project's functionality, along with explanations for our other relevant notebooks. 
+Quickstart: Run RecipeRecommender.ipynb which contains most of this project's functionality, along with explanations for our other relevant notebooks.
+
+NOTE: As described in RecipeRecommender.ipynb, to get the full evaluation results in comparing baselines to ALS predictions and user-user similarity predictions, one needs to first run baselines.ipynb to generate train_baselines.csv file.  Then run pyspark_als.ipynb to generate the val_als.csv file.  Finally, to train the user similarity model on top of our baseline, run user_similarity.ipynb.
 
 Requirements:
 * dask
@@ -18,7 +20,7 @@ Requirements:
 * functools
 * scipy.stats
 * rbo
-* sparse
+* sparse v0.13.0
 * dask_ml
 * time
 
