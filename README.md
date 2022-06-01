@@ -2,6 +2,8 @@ Thought for Food: Providing Quality Recipe Recommendations to the Bourgeoning Co
 
 Abstract: Recommender systems have gained traction in recommending movies, songs, and merchandise. Here, we look at a recommender system for food recipes using ratings and recipe datasets collected from Food.com over 18 years. We implement two separate approaches of collaborative filtering— matrix factorization and user-user similarity to recommend users unseen recipes. We’ve incorporated x metrics. Future work will include ultilizing different datasets, looking at content-based regression approaches, other similarity metrics, and exploring different evaluation metrics.
 
+Quickstart: Run RecipeRecommender.ipynb which contains most of this project's functionality, along with explanations for our other relevant notebooks. 
+
 Requirements:
 * dask
 * pyspark
